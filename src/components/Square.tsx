@@ -21,6 +21,8 @@ export const Square: React.FC<SquareProps> = observer(props => {
 
   const onRightClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
+    if (squareModel.state !== SquareState.closed) return
+
     squareModel.toggleFlag()
   }
 
