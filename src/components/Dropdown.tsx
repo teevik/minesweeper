@@ -5,22 +5,24 @@ import * as React from "react"
 import { useState } from "react"
 import * as AriaMenubutton from "react-aria-menubutton"
 import styled from "styled-components"
+import { DropdownEntry } from "types"
 
-export const Dropdown: React.FC = props => {
-  const entries: { value: string; content: React.ReactNode }[] = [
-    { value: "beginner", content: "Beginner - 9x9" },
-    { value: "advanced", content: "Advanced - 16x16" },
-    { value: "expert", content: "Expert - 16x30" }
-  ]
+interface DropdownProps {
+  entries: DropdownEntry[]
+  selectedEntry: DropdownEntry
+  onEntryChange: (entry: DropdownEntry) => void
+}
 
-  const [selectedKey, setSelectedKey] = useState(entries[0].value)
-  const handleSelection = (value: any) => setSelectedKey(value)
+export const Dropdown: React.FC<DropdownProps> = props => {
+  const { entries, selectedEntry, onEntryChange } = props
 
-  const selectedEntry = entries.find(entry => entry.value === selectedKey)
-  if (!selectedEntry) throw new Error()
+  const handleSelection = (value: any) => {
+    const newEntry = entries.find(entry => entry.value === value)!
+    onEntryChange(newEntry)
+  }
 
   const menuItems = entries.map(entry => {
-    if (entry === selectedEntry) return null
+    if (entry.value === selectedEntry.value) return null
 
     return (
       <MenuItem key={entry.value} value={entry.value}>
