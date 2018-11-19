@@ -12,7 +12,7 @@ export const Topbar: React.FC = observer(props => {
   return (
     <Wrapper>
       <BombsLeft>
-        <BombsLeftImportant>{bombsLeft}</BombsLeftImportant>bombs left
+        <BombsLeftImportant>{bombsLeft}</BombsLeftImportant>mines left
       </BombsLeft>
       <StopGameButton onClick={() => gameStore.stopGame()}>
         <CloseIcon />
