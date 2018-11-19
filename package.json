@@ -1,6 +1,7 @@
 {
   "name": "minesweeper",
   "version": "1.0.0",
+  "homepage": "https://teevik.github.io/minesweeper",
   "scripts": {
     "start": "craco start",
     "build": "craco build",
