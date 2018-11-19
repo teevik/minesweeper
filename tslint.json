@@ -1,0 +1,12 @@
+{
+  "defaultSeverity": "warning",
+  "rules": {
+    "semicolon": [true, "never"],
+    "no-inferrable-types": true,
+    "member-access": true,
+    "interface-over-type-literal": true,
+    "ordered-imports": true,
+    "no-unused-variable": true,
+    "quotemark": [true, "double"]
+  }
+}
