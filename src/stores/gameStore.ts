@@ -1,6 +1,6 @@
 import { action, computed, observable } from "mobx"
 import { SquareModel } from "models"
-import { SquareState } from "types"
+import { Dimensions, SquareState } from "types"
 
 class GameStore {
   @observable
@@ -8,8 +8,8 @@ class GameStore {
   @observable
   public minefield: SquareModel[][] = []
 
-  public readonly width = 9
-  public readonly height = 9
+  public width = 18
+  public height = 9
 
   constructor() {}
 
@@ -17,19 +17,19 @@ class GameStore {
   public startGame() {
     const minefield: SquareModel[][] = []
 
-    for (let i = 0; i < this.width; i++) {
+    for (let i = 0; i < this.height; i++) {
       const row: SquareModel[] = []
       minefield.push(row)
 
-      for (let j = 0; j < this.height; j++) {
-        const square = new SquareModel(Math.random() >= 0.85)
+      for (let j = 0; j < this.width; j++) {
+        const square = new SquareModel(Math.random() >= 0.9)
         row.push(square)
       }
     }
 
-    for (let i = 0; i < this.width; i++) {
+    for (let i = 0; i < this.height; i++) {
       const row = minefield[i]
-      for (let j = 0; j < this.height; j++) {
+      for (let j = 0; j < this.width; j++) {
         const square = row[j]
 
         const neighbors: SquareModel[] = []
@@ -51,6 +51,11 @@ class GameStore {
 
     this.minefield = minefield
     this.gameRunning = true
+  }
+
+  public setDimensions(dimensions: Dimensions) {
+    this.width = dimensions.width
+    this.height = dimensions.height
   }
 
   @action
