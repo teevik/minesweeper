@@ -1,14 +1,14 @@
 import { observer } from "mobx-react-lite"
 import * as React from "react"
 import styled, { createGlobalStyle } from "styled-components"
-import { Game, Header, Minefield, StartScreen, Topbar } from "../components"
+import { Game, Header, Minefield, StartScreen, TopBar } from "../components"
 import { gameStore } from "../stores"
 
 const renderStartScreen = () => <StartScreen />
 
 const renderGame = () => (
   <Game>
-    <Topbar />
+    <TopBar />
     <Minefield />
   </Game>
 )

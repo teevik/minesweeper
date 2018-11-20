@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { CloseIcon, RefreshIcon } from "../icons"
 import { gameStore } from "../stores"
 
-export const Topbar: React.FC = observer(props => {
+export const TopBar: React.FC = observer(props => {
   const { bombAmount, flaggedAmount } = gameStore
 
   const bombsLeft = bombAmount - flaggedAmount
