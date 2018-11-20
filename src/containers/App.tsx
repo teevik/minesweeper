@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite"
 import * as React from "react"
 import styled, { createGlobalStyle } from "styled-components"
-import { Game, Header, Minefield, StartScreen, TopBar } from "."
+import { BottomBar, Game, Header, Minefield, StartScreen, TopBar } from "."
 import { gameStore } from "../stores"
 
 const renderStartScreen = () => <StartScreen />
@@ -10,6 +10,7 @@ const renderGame = () => (
   <Game>
     <TopBar />
     <Minefield />
+    <BottomBar />
   </Game>
 )
 
@@ -18,7 +19,7 @@ export const App: React.FC = observer(props => {
     <>
       <Wrapper>
         <Header />
-        {gameStore.gameRunning ? renderGame() : renderStartScreen()}
+        {gameStore.hasStopped ? renderStartScreen() : renderGame()}
       </Wrapper>
       <GlobalStyle />
     </>

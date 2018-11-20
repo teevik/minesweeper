@@ -14,10 +14,10 @@ export const TopBar: React.FC = observer(props => {
       <BombsLeft>
         <BombsLeftImportant>{bombsLeft}</BombsLeftImportant>mines left
       </BombsLeft>
-      <GameButton onClick={() => gameStore.startGame()}>
+      <GameButton onClick={() => gameStore.onStartGame()}>
         <RefreshIcon />
       </GameButton>
-      <GameButton onClick={() => gameStore.stopGame()}>
+      <GameButton onClick={() => gameStore.onStopGame()}>
         <CloseIcon />
       </GameButton>
     </Wrapper>
@@ -50,6 +50,10 @@ const GameButton = styled.button`
   all: unset;
   line-height: 0;
   cursor: pointer;
+
+  &:hover * {
+    opacity: 1;
+  }
 
   & + & {
     margin-left: 8px;

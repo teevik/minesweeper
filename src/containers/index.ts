@@ -1,4 +1,5 @@
 export * from "./App"
+export * from "./BottomBar"
 export * from "./Game"
 export * from "./Header"
 export * from "./Minefield"

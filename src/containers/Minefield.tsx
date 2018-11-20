@@ -8,9 +8,9 @@ export const Minefield: React.FC = observer(props => {
   const { minefield, mineHasExploded, width, height } = gameStore
   const gameIsOver = mineHasExploded
 
-  const renderedMinefield = minefield
-    .flat()
-    .map((square, id) => <Square key={id} squareModel={square} />)
+  const renderedMinefield = minefield.map((square, id) => (
+    <Square key={id} squareModel={square} />
+  ))
 
   return (
     <Wrapper width={width} height={height} gameIsOver={gameIsOver}>

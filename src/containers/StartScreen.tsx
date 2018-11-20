@@ -17,7 +17,7 @@ export const StartScreen: React.FC = props => {
 
   const handleStartGame = () => {
     gameStore.setDimensions(gameDimensions[selectedEntry.value])
-    gameStore.startGame()
+    gameStore.onStartGame()
   }
 
   return (
