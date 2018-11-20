@@ -1,4 +1,5 @@
 import { Button, Dropdown, Label } from "components"
+import { dimensions } from "constants"
 import { useDropdown } from "hooks"
 import * as React from "react"
 import { gameStore } from "stores"
@@ -15,12 +16,6 @@ export const StartScreen: React.FC = props => {
   const { selectedEntry } = gameModeDropdown
 
   const handleStartGame = () => {
-    const dimensions: Record<string, Dimensions> = {
-      beginner: { width: 9, height: 9 },
-      advanced: { width: 16, height: 16 },
-      expert: { width: 30, height: 16 }
-    }
-
     gameStore.setDimensions(dimensions[selectedEntry.value])
     gameStore.startGame()
   }
