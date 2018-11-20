@@ -1,5 +1,5 @@
 import { action, computed, observable } from "mobx"
-import { SquareState } from "types"
+import { SquareState } from "../types"
 
 export class SquareModel {
   public readonly hasBomb: boolean

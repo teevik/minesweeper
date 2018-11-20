@@ -1,10 +1,10 @@
-import { Button, Dropdown, Label } from "components"
-import { dimensions } from "constants"
-import { useDropdown } from "hooks"
 import * as React from "react"
-import { gameStore } from "stores"
 import styled from "styled-components"
-import { Dimensions } from "types"
+import { Button, Dropdown, Label } from "../components"
+import { dimensions } from "../constants"
+import { useDropdown } from "../hooks"
+import { gameStore } from "../stores"
+import { Dimensions } from "../types"
 
 export const StartScreen: React.FC = props => {
   const gameModeDropdown = useDropdown([

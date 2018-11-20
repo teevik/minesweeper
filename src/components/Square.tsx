@@ -1,9 +1,9 @@
-import { FlagIcon } from "icons"
 import { observer } from "mobx-react-lite"
-import { SquareModel } from "models"
 import * as React from "react"
 import styled from "styled-components"
-import { SquareState } from "types"
+import { FlagIcon } from "../icons"
+import { SquareModel } from "../models"
+import { SquareState } from "../types"
 
 interface SquareProps {
   squareModel: SquareModel

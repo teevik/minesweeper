@@ -1,4 +1,4 @@
-import { Dimensions } from "types"
+import { Dimensions } from "../types"
 
 export const dimensions: Record<string, Dimensions> = {
   beginner: { width: 9, height: 9 },

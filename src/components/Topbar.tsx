@@ -1,8 +1,8 @@
-import { CloseIcon } from "icons"
 import { observer } from "mobx-react-lite"
 import * as React from "react"
-import { gameStore } from "stores"
 import styled from "styled-components"
+import { CloseIcon } from "../icons"
+import { gameStore } from "../stores"
 
 export const Topbar: React.FC = observer(props => {
   const { bombAmount, flaggedAmount } = gameStore

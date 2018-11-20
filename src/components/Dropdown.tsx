@@ -1,11 +1,11 @@
-import { Button } from "components"
 import { action } from "mobx"
 import { useObservable } from "mobx-react-lite"
 import * as React from "react"
 import { useState } from "react"
 import * as AriaMenubutton from "react-aria-menubutton"
 import styled from "styled-components"
-import { DropdownEntry } from "types"
+import { Button } from "../components"
+import { DropdownEntry } from "../types"
 
 interface DropdownProps {
   entries: DropdownEntry[]

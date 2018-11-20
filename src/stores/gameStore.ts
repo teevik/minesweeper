@@ -1,6 +1,6 @@
 import { action, computed, observable } from "mobx"
-import { SquareModel } from "models"
-import { Dimensions, SquareState } from "types"
+import { SquareModel } from "../models"
+import { Dimensions, SquareState } from "../types"
 
 class GameStore {
   @observable
