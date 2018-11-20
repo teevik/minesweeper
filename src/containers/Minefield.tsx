@@ -2,7 +2,7 @@ import classNames from "classnames"
 import { observer } from "mobx-react-lite"
 import * as React from "react"
 import styled from "styled-components"
-import { Square } from "../components"
+import { Square } from "../containers"
 import { gameStore } from "../stores"
 
 export const Minefield: React.FC = observer(props => {
