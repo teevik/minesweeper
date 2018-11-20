@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite"
 import * as React from "react"
 import styled from "styled-components"
-import { CloseIcon } from "../icons"
+import { CloseIcon, RefreshIcon } from "../icons"
 import { gameStore } from "../stores"
 
 export const Topbar: React.FC = observer(props => {
@@ -14,16 +14,18 @@ export const Topbar: React.FC = observer(props => {
       <BombsLeft>
         <BombsLeftImportant>{bombsLeft}</BombsLeftImportant>mines left
       </BombsLeft>
-      <StopGameButton onClick={() => gameStore.stopGame()}>
+      <GameButton onClick={() => gameStore.startGame()}>
+        <RefreshIcon />
+      </GameButton>
+      <GameButton onClick={() => gameStore.stopGame()}>
         <CloseIcon />
-      </StopGameButton>
+      </GameButton>
     </Wrapper>
   )
 })
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 8px;
 `
@@ -34,6 +36,8 @@ const BombsLeft = styled.p`
   font-size: 15px;
   opacity: 0.75;
   line-height: 0.75;
+
+  margin-right: auto;
 `
 
 const BombsLeftImportant = styled.span`
@@ -42,8 +46,12 @@ const BombsLeftImportant = styled.span`
   margin-right: 2px;
 `
 
-const StopGameButton = styled.button`
+const GameButton = styled.button`
   all: unset;
   line-height: 0;
   cursor: pointer;
+
+  & + & {
+    margin-left: 8px;
+  }
 `

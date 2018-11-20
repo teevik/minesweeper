@@ -14,7 +14,6 @@ export const CloseIcon: React.FC = props => {
 
 const Wrapper = styled.svg`
   opacity: 0.83;
-  width: 27px;
   height: 27px;
 `
 
