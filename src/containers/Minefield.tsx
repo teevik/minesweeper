@@ -1,3 +1,4 @@
+import classNames from "classnames"
 import { observer } from "mobx-react-lite"
 import * as React from "react"
 import styled from "styled-components"
@@ -11,8 +12,12 @@ export const Minefield: React.FC = observer(props => {
     <Square key={id} squareModel={square} />
   ))
 
+  const className = classNames({
+    gameHasEnded
+  })
+
   return (
-    <Wrapper width={width} height={height} gameHasEnded={gameHasEnded}>
+    <Wrapper className={className} width={width} height={height}>
       {renderedMinefield}
     </Wrapper>
   )
@@ -21,11 +26,13 @@ export const Minefield: React.FC = observer(props => {
 const Wrapper = styled.div<{
   width: number
   height: number
-  gameHasEnded: boolean
 }>`
   display: grid;
   grid-template-columns: repeat(${props => props.width}, 30px);
   grid-template-rows: repeat(${props => props.height}, 30px);
   grid-gap: 1px;
-  pointer-events: ${props => (props.gameHasEnded ? "none" : "auto")};
+
+  &.gameHasEnded {
+    pointer-events: none;
+  }
 `
