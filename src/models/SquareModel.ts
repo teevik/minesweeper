@@ -1,10 +1,11 @@
 import { action, computed, observable } from "mobx"
-import { SquareState } from "../types"
+
+export type SquareState = "opened" | "closed" | "exploded"
 
 export class SquareModel {
   public readonly hasBomb: boolean
   @observable public isFlagged = false
-  @observable public state: SquareState = "closed"
+  @observable private state: SquareState = "closed"
 
   private neighbors!: SquareModel[]
 

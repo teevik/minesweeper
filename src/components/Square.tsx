@@ -22,7 +22,7 @@ export const Square: React.FC<SquareProps> = observer(props => {
 
   const onRightClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    if (squareModel.state !== "closed") return
+    if (!squareModel.isClosed) return
 
     squareModel.toggleFlag()
   }
@@ -61,7 +61,6 @@ const Wrapper = styled.button`
   background-color: rgba(0, 0, 0, 0.36);
 
   &.isOpened,
-  &:focus,
   &:hover {
     background-color: rgba(0, 0, 0, 0.16);
   }

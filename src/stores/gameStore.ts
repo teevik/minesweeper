@@ -1,20 +1,26 @@
 import { action, computed, observable } from "mobx"
 import { SquareModel } from "../models"
-import { Dimensions, SquareState } from "../types"
+import { Dimensions } from "../types"
+
+export type GameState = "stopped" | "started"
 
 class GameStore {
   @observable
-  public gameRunning = false
+  private state: GameState = "stopped"
+
   @observable
-  public minefield: SquareModel[][] = []
+  public minefield: SquareModel[] = []
 
-  public width = 18
-  public height = 9
+  public width = 0
+  public height = 0
 
-  constructor() {}
+  public setDimensions(dimensions: Dimensions) {
+    this.width = dimensions.width
+    this.height = dimensions.height
+  }
 
   @action
-  public startGame() {
+  public onStartGame() {
     const minefield: SquareModel[][] = []
 
     for (let i = 0; i < this.height; i++) {
@@ -49,34 +55,50 @@ class GameStore {
       }
     }
 
-    this.minefield = minefield
-    this.gameRunning = true
-  }
-
-  public setDimensions(dimensions: Dimensions) {
-    this.width = dimensions.width
-    this.height = dimensions.height
+    this.minefield = minefield.flat()
+    this.state = "started"
   }
 
   @action
-  public stopGame() {
-    this.minefield = []
-    this.gameRunning = false
+  public onStopGame() {
+    this.state = "stopped"
+  }
+
+  @computed
+  public get hasStarted() {
+    return this.state === "started"
+  }
+
+  @computed
+  public get hasStopped() {
+    return this.state === "stopped"
+  }
+
+  @computed
+  public get hasWon() {
+    return this.minefield.every(square =>
+      square.hasBomb ? square.isFlagged : square.isOpened
+    )
+  }
+
+  @computed
+  public get hasLost() {
+    return this.minefield.some(square => square.isExploded)
   }
 
   @computed
   public get mineHasExploded() {
-    return this.minefield.flat().some(square => square.state === "exploded")
+    return this.minefield.some(square => square.isExploded)
   }
 
   @computed
   public get bombAmount() {
-    return this.minefield.flat().filter(square => square.hasBomb).length
+    return this.minefield.filter(square => square.hasBomb).length
   }
 
   @computed
   public get flaggedAmount() {
-    return this.minefield.flat().filter(square => square.isFlagged).length
+    return this.minefield.filter(square => square.isFlagged).length
   }
 }
 
