@@ -1,1 +1,1 @@
-export * from "./gameDimensions"
+export * from "./boardInfo"

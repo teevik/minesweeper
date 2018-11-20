@@ -1,2 +1,2 @@
-export * from "./Dimensions"
+export * from "./BoardInfo"
 export * from "./DropdownEntry"
