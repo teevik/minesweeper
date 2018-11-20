@@ -4,6 +4,7 @@ import * as React from "react"
 import styled from "styled-components"
 import { FlagIcon } from "../icons"
 import { SquareModel } from "../models"
+import { gameStore } from "../stores"
 
 interface SquareProps {
   squareModel: SquareModel
@@ -11,7 +12,8 @@ interface SquareProps {
 
 export const Square: React.FC<SquareProps> = observer(props => {
   const { squareModel } = props
-  const { isFlagged, isOpened, isExploded } = squareModel
+  const { hasLost } = gameStore
+  const { isFlagged, isOpened, isExploded, hasBomb } = squareModel
 
   const onLeftClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
@@ -35,7 +37,7 @@ export const Square: React.FC<SquareProps> = observer(props => {
 
   const className = classNames({
     isOpened,
-    isExploded
+    isExploded: isExploded || (hasBomb && hasLost)
   })
 
   return (
@@ -66,7 +68,7 @@ const Wrapper = styled.button`
   }
 
   &.isExploded {
-    background-color: red;
+    background-color: #c80000;
   }
 
   color: #5960e4;
