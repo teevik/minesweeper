@@ -5,14 +5,14 @@ import { Square } from "../components"
 import { gameStore } from "../stores"
 
 export const Minefield: React.FC = observer(props => {
-  const { minefield, gameEnded, width, height } = gameStore
+  const { minefield, gameHasEnded, width, height } = gameStore
 
   const renderedMinefield = minefield.map((square, id) => (
     <Square key={id} squareModel={square} />
   ))
 
   return (
-    <Wrapper width={width} height={height} gameEnded={gameEnded}>
+    <Wrapper width={width} height={height} gameHasEnded={gameHasEnded}>
       {renderedMinefield}
     </Wrapper>
   )
@@ -21,11 +21,11 @@ export const Minefield: React.FC = observer(props => {
 const Wrapper = styled.div<{
   width: number
   height: number
-  gameEnded: boolean
+  gameHasEnded: boolean
 }>`
   display: grid;
   grid-template-columns: repeat(${props => props.width}, 30px);
   grid-template-rows: repeat(${props => props.height}, 30px);
   grid-gap: 1px;
-  pointer-events: ${props => (props.gameEnded ? "none" : "auto")};
+  pointer-events: ${props => (props.gameHasEnded ? "none" : "auto")};
 `

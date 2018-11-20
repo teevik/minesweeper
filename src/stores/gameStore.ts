@@ -87,7 +87,7 @@ class GameStore {
   }
 
   @computed
-  public get gameEnded() {
+  public get gameHasEnded() {
     return this.hasWon || this.hasLost
   }
 
