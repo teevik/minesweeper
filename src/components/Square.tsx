@@ -21,7 +21,7 @@ export const Square: React.FC<SquareProps> = observer(props => {
 
   const onRightClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    if (squareModel.state !== SquareState.closed) return
+    if (squareModel.state !== "closed") return
 
     squareModel.toggleFlag()
   }
@@ -36,8 +36,7 @@ export const Square: React.FC<SquareProps> = observer(props => {
       <Choose>
         <When
           condition={
-            squareModel.state === SquareState.opened &&
-            squareModel.neighborsWithBomb > 0
+            squareModel.state === "opened" && squareModel.neighborsWithBomb > 0
           }
         >
           {squareModel.neighborsWithBomb}
@@ -60,16 +59,16 @@ const Wrapper = styled.button<{ state: SquareState; isFlagged: boolean }>`
   cursor: pointer;
 
   ${({ state }) =>
-    state === SquareState.opened
+    state === "opened"
       ? `
     border: none;
   `
       : ""}
 
   background-color: ${({ state }) =>
-    state === SquareState.exploded
+    state === "exploded"
       ? "red"
-      : state === SquareState.opened
+      : state === "opened"
       ? "rgba(0, 0, 0, 0.16)"
       : "rgba(0, 0, 0, 0.36)"};
 

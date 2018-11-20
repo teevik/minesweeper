@@ -4,7 +4,7 @@ import { SquareState } from "../types"
 export class SquareModel {
   public readonly hasBomb: boolean
   @observable public isFlagged = false
-  @observable public state = SquareState.closed
+  @observable public state: SquareState = "closed"
 
   private neighbors!: SquareModel[]
 
@@ -18,14 +18,14 @@ export class SquareModel {
 
   @action
   public onOpen() {
-    if (this.state === SquareState.opened) return
+    if (this.state === "opened") return
 
     const willExplode = this.hasBomb
-    this.state = willExplode ? SquareState.exploded : SquareState.opened
+    this.state = willExplode ? "exploded" : "opened"
 
     if (!willExplode && this.neighborsWithBomb === 0) {
       for (const neighbor of this.neighbors) {
-        if (neighbor.state === SquareState.closed) neighbor.onOpen()
+        if (neighbor.state === "closed") neighbor.onOpen()
       }
     }
   }

@@ -66,9 +66,7 @@ class GameStore {
 
   @computed
   public get mineHasExploded() {
-    return this.minefield
-      .flat()
-      .some(square => square.state === SquareState.exploded)
+    return this.minefield.flat().some(square => square.state === "exploded")
   }
 
   @computed

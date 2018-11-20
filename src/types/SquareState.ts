@@ -1,5 +1,1 @@
-export enum SquareState {
-  opened,
-  closed,
-  exploded
-}
+export type SquareState = "opened" | "closed" | "exploded"
