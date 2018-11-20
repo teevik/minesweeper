@@ -68,7 +68,7 @@ const Wrapper = styled.button`
   }
 
   &.isExploded {
-    background-color: #c80000;
+    background-color: #5960e4;
   }
 
   color: #5960e4;
