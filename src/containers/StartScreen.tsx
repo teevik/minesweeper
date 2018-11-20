@@ -42,7 +42,7 @@ const Wrapper = styled.main`
 `
 
 const Hr = styled.hr`
-  border-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.01);
   border-width: 1px;
   margin: 32px 0;
 `
