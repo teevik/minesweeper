@@ -87,8 +87,8 @@ class GameStore {
   }
 
   @computed
-  public get mineHasExploded() {
-    return this.minefield.some(square => square.isExploded)
+  public get gameEnded() {
+    return this.hasWon || this.hasLost
   }
 
   @computed
