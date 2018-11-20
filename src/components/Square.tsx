@@ -1,9 +1,9 @@
+import classNames from "classnames"
 import { observer } from "mobx-react-lite"
 import * as React from "react"
 import styled from "styled-components"
 import { FlagIcon } from "../icons"
 import { SquareModel } from "../models"
-import { SquareState } from "../types"
 
 interface SquareProps {
   squareModel: SquareModel
@@ -11,10 +11,11 @@ interface SquareProps {
 
 export const Square: React.FC<SquareProps> = observer(props => {
   const { squareModel } = props
+  const { isFlagged, isOpened, isExploded } = squareModel
 
   const onLeftClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    if (squareModel.isFlagged) return
+    if (isFlagged) return
 
     squareModel.onOpen()
   }
@@ -26,30 +27,29 @@ export const Square: React.FC<SquareProps> = observer(props => {
     squareModel.toggleFlag()
   }
 
+  let squareContent: React.ReactNode
+
+  if (isFlagged) squareContent = <FlagIcon />
+  if (isOpened && squareModel.neighborsWithBomb > 0)
+    squareContent = squareModel.neighborsWithBomb
+
+  const className = classNames({
+    isOpened,
+    isExploded
+  })
+
   return (
     <Wrapper
-      state={squareModel.state}
-      isFlagged={squareModel.isFlagged}
+      className={className}
       onClick={onLeftClick}
       onContextMenu={onRightClick}
     >
-      <Choose>
-        <When
-          condition={
-            squareModel.state === "opened" && squareModel.neighborsWithBomb > 0
-          }
-        >
-          {squareModel.neighborsWithBomb}
-        </When>
-        <When condition={squareModel.isFlagged}>
-          <FlagIcon />
-        </When>
-      </Choose>
+      {squareContent}
     </Wrapper>
   )
 })
 
-const Wrapper = styled.button<{ state: SquareState; isFlagged: boolean }>`
+const Wrapper = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,21 +58,19 @@ const Wrapper = styled.button<{ state: SquareState; isFlagged: boolean }>`
   border: none;
   cursor: pointer;
 
-  ${({ state }) =>
-    state === "opened"
-      ? `
-    border: none;
-  `
-      : ""}
+  background-color: rgba(0, 0, 0, 0.36);
 
-  background-color: ${({ state }) =>
-    state === "exploded"
-      ? "red"
-      : state === "opened"
-      ? "rgba(0, 0, 0, 0.16)"
-      : "rgba(0, 0, 0, 0.36)"};
+  &.isOpened,
+  &:focus,
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.16);
+  }
 
-  color: #5960E4;
+  &.isExploded {
+    background-color: red;
+  }
+
+  color: #5960e4;
   font-size: 15px;
   font-weight: 600;
 `

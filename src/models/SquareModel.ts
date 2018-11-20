@@ -41,4 +41,19 @@ export class SquareModel {
 
     return neighbors.length
   }
+
+  @computed
+  public get isClosed() {
+    return this.state === "closed"
+  }
+
+  @computed
+  public get isOpened() {
+    return this.state === "opened"
+  }
+
+  @computed
+  public get isExploded() {
+    return this.state === "exploded"
+  }
 }

@@ -8,6 +8,7 @@
     "test": "craco test"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "mobx": "^5.5.2",
     "mobx-react-lite": "^0.3.0",
     "react": "^16.7.0-alpha.2",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.1.2",
     "@teevik/craco": "^2.0.3",
+    "@types/classnames": "^2.2.6",
     "@types/react": "^16.4.18",
     "@types/react-aria-menubutton": "^5.1.1",
     "@types/react-dom": "^16.0.9",
