@@ -831,6 +831,15 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@craco/craco@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@craco/craco/-/craco-3.1.0.tgz#498b538a183a5543a5072dcf4eb24961eb4d3bc2"
+  integrity sha512-Rj8KDqcJqyggf6EZC57zHXGN7oWKDJo1Yc1PSN7i6mQE7Ne3P2KdX0J5q50qHtKlfgScfxbVj3Km79jqLd6HGw==
+  dependencies:
+    cross-spawn "6.0.5"
+    lodash.mergewith "4.6.1"
+    webpack-merge "4.1.4"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -895,15 +904,6 @@
     "@babel/preset-react" "^7.0.0"
     "@svgr/core" "^2.4.1"
     loader-utils "^1.1.0"
-
-"@teevik/craco@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@teevik/craco/-/craco-2.0.3.tgz#683482209535c8a5b9638cfd817289a6cd9c0c78"
-  integrity sha512-FceAKEB9ZwPjijPczUJqviQcCm+6m3tctMBnE2mf3v+FJupt8jwNw3FKbhmNJcqrKcxgm6wlvWfpkSWh330ktA==
-  dependencies:
-    cross-spawn "6.0.5"
-    lodash.mergewith "4.6.1"
-    webpack-merge "4.1.4"
 
 "@types/classnames@^2.2.6":
   version "2.2.6"
