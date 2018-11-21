@@ -44,6 +44,7 @@ export const Dropdown: React.FC<DropdownProps> = props => {
 
 const Wrapper = styled(AriaMenubutton.Wrapper)`
   position: relative;
+  display: flex;
 `
 
 const Menu = styled(AriaMenubutton.Menu)`
@@ -84,5 +85,6 @@ const Icon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 8px;
+  padding-left: 8px;
+  margin-left: auto;
 `

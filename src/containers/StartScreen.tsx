@@ -37,7 +37,7 @@ const Wrapper = styled.main`
   margin: auto;
   padding: 32px;
   background-color: rgba(0, 0, 0, 0.36);
-  min-width: 300px;
+  min-width: 350px;
 `
 
 const Hr = styled.hr`
