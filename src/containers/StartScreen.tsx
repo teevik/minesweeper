@@ -5,7 +5,9 @@ import { boardInfo } from "../constants"
 import { useDropdown } from "../hooks"
 import { gameStore } from "../stores"
 
-export const StartScreen: React.FC = props => {
+export const StartScreen: React.FC<
+  React.HTMLAttributes<HTMLMainElement>
+> = props => {
   const gameModeDropdown = useDropdown([
     { value: "beginner", content: "Beginner - 9x9" },
     { value: "advanced", content: "Advanced - 16x16" },

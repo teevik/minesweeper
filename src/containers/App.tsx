@@ -4,22 +4,17 @@ import styled, { createGlobalStyle } from "styled-components"
 import { BottomBar, Game, Header, Minefield, StartScreen, TopBar } from "."
 import { gameStore } from "../stores"
 
-const renderStartScreen = () => <StartScreen />
-
-const renderGame = () => (
-  <Game>
-    <TopBar />
-    <Minefield />
-    <BottomBar />
-  </Game>
-)
-
 export const App: React.FC = observer(props => {
   return (
     <>
       <Wrapper>
         <Header />
-        {gameStore.hasStopped ? renderStartScreen() : renderGame()}
+        <Game hidden={gameStore.hasStopped}>
+          <TopBar />
+          <Minefield />
+          <BottomBar />
+        </Game>
+        <StartScreen hidden={!gameStore.hasStopped} />
       </Wrapper>
       <GlobalStyle />
     </>
@@ -44,5 +39,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: #0B0C20;
     font-family: Montserrat, sans-serif;
+  }
+
+  [hidden] {
+    display: none !important;
   }
 `

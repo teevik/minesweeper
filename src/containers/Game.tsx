@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from "styled-components"
 
-export const Game: React.FC = props => {
-  return <Wrapper>{props.children}</Wrapper>
+export const Game: React.FC<React.HTMLAttributes<HTMLMainElement>> = props => {
+  return <Wrapper {...props} />
 }
 
 const Wrapper = styled.main`
