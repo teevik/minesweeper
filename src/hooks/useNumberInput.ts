@@ -1,22 +1,27 @@
-import { useCallback, useState } from "react"
+import * as React from "react"
+import { NumberInputProps } from "../types"
 
-type UseNumberInputReturnType = [
-  React.AllHTMLAttributes<HTMLInputElement>,
-  number
-]
+interface UseNumberInputOptions {
+  defaultValue: number
+  min: number
+  max: number
+}
 
 export const useNumberInput = (
-  defaultValue: number
-): UseNumberInputReturnType => {
-  const [stringValue, changeStringValue] = useState(defaultValue.toString())
+  options: UseNumberInputOptions
+): NumberInputProps => {
+  const { min, max, defaultValue } = options
 
-  const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target
+  const [value, _setValue] = React.useState(defaultValue)
 
-    changeStringValue(value.replace(/\D/, ""))
-  }, [])
+  const setValue = (input: number) => {
+    let actualInput = input
 
-  const numberValue = parseInt(stringValue) || defaultValue
+    if (input < min) actualInput = min
+    if (input > max) actualInput = max
 
-  return [{ value: stringValue, onChange }, numberValue]
+    _setValue(actualInput)
+  }
+
+  return { value, setValue }
 }

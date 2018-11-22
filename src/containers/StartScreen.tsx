@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import { Button, Dropdown, Label } from "../components"
+import { Button, Dropdown, Label, NumberInput } from "../components"
 import { boardInfo } from "../constants"
 import { useDropdown, useNumberInput } from "../hooks"
 import { gameStore } from "../stores"
@@ -14,9 +14,9 @@ export const StartScreen: React.FC<
     { value: "expert", content: "Expert - 30x16" },
     { value: "custom", content: "Custom" }
   ])
-  const [widthInput, width] = useNumberInput(1)
-  const [heightInput, height] = useNumberInput(1)
-  const [bombAmountInput, bombAmount] = useNumberInput(1)
+  const widthInput = useNumberInput({ defaultValue: 10, min: 1, max: 30 })
+  const heightInput = useNumberInput({ defaultValue: 10, min: 1, max: 30 })
+  const bombAmountInput = useNumberInput({ defaultValue: 5, min: 1, max: 40 })
 
   const { selectedEntry } = gameModeDropdown
   const isCustom = selectedEntry.value === "custom"
@@ -24,9 +24,9 @@ export const StartScreen: React.FC<
   const handleStartGame = () => {
     if (isCustom) {
       gameStore.setupGame({
-        width,
-        height,
-        bombAmount
+        width: widthInput.value,
+        height: heightInput.value,
+        bombAmount: bombAmountInput.value
       })
     } else {
       gameStore.setupGame(boardInfo[selectedEntry.value])
@@ -37,11 +37,11 @@ export const StartScreen: React.FC<
   const customSetup = isCustom && (
     <>
       <Label>Width</Label>
-      <input {...widthInput} />
+      <NumberInput {...widthInput} />
       <Label>Height</Label>
-      <input {...heightInput} />
+      <NumberInput {...heightInput} />
       <Label>Amount of mines</Label>
-      <input {...bombAmountInput} />
+      <NumberInput {...bombAmountInput} />
     </>
   )
 

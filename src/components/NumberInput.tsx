@@ -1,0 +1,64 @@
+import * as React from "react"
+import { NumberInputProps } from "../types"
+
+const getValidNumber = (value: string) => parseInt(value) || 0
+
+export const NumberInput: React.FC<NumberInputProps> = props => {
+  const { value, setValue } = props
+
+  const [isInputting, setIsInputting] = React.useState(false)
+  const [rawValue, setRawValue] = React.useState("")
+
+  const flushRawChanges = () => {
+    if (isInputting) {
+      setIsInputting(false)
+      setValue(getValidNumber(rawValue))
+    }
+  }
+
+  const onChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setIsInputting(true)
+      setRawValue(event.target.value)
+    },
+    []
+  )
+
+  const onBlur = React.useCallback(
+    () => {
+      flushRawChanges()
+    },
+    [isInputting, rawValue]
+  )
+
+  const onKeyDown = React.useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      const { key } = event
+
+      let changeAmount = event.shiftKey ? 10 : 1
+
+      const handlers: Record<string, () => number> = {
+        ArrowUp: () => value + changeAmount,
+        ArrowDown: () => value - changeAmount
+      }
+
+      const handler = handlers[key]
+      if (!handler) return
+
+      event.preventDefault()
+      flushRawChanges()
+      setValue(handler())
+    },
+    [isInputting, rawValue, value]
+  )
+
+  return (
+    <input
+      type="text"
+      value={isInputting ? rawValue : value}
+      onChange={onChange}
+      onBlur={onBlur}
+      onKeyDown={onKeyDown}
+    />
+  )
+}
