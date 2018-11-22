@@ -16,41 +16,32 @@ export const NumberInput: React.FC<NumberInputProps> = props => {
     }
   }
 
-  const onChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setIsInputting(true)
-      setRawValue(event.target.value)
-    },
-    []
-  )
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsInputting(true)
+    setRawValue(event.target.value)
+  }
 
-  const onBlur = React.useCallback(
-    () => {
-      flushRawChanges()
-    },
-    [isInputting, rawValue]
-  )
+  const onBlur = () => {
+    flushRawChanges()
+  }
 
-  const onKeyDown = React.useCallback(
-    (event: React.KeyboardEvent<HTMLInputElement>) => {
-      const { key } = event
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const { key } = event
 
-      let changeAmount = event.shiftKey ? 10 : 1
+    let changeAmount = event.shiftKey ? 10 : 1
 
-      const handlers: Record<string, () => number> = {
-        ArrowUp: () => value + changeAmount,
-        ArrowDown: () => value - changeAmount
-      }
+    const handlers: Record<string, () => number> = {
+      ArrowUp: () => value + changeAmount,
+      ArrowDown: () => value - changeAmount
+    }
 
-      const handler = handlers[key]
-      if (!handler) return
+    const handler = handlers[key]
+    if (!handler) return
 
-      event.preventDefault()
-      flushRawChanges()
-      setValue(handler())
-    },
-    [isInputting, rawValue, value]
-  )
+    event.preventDefault()
+    flushRawChanges()
+    setValue(handler())
+  }
 
   return (
     <input
