@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import { Button, Dropdown, Label, NumberInput } from "../components"
+import * as S from "../components/styles"
 import { boardInfo } from "../constants"
 import { useDropdown, useNumberInput } from "../hooks"
 import { gameStore } from "../stores"
@@ -66,6 +67,13 @@ const Wrapper = styled.main`
   padding: 32px;
   background-color: rgba(0, 0, 0, 0.36);
   min-width: 350px;
+
+  ${S.Label} {
+    margin-bottom: 4px;
+    &:not(:first-child) {
+      margin-top: 16px;
+    }
+  }
 `
 
 const Hr = styled.hr`
