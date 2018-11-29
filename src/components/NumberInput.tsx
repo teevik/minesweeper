@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Input } from "."
 import { NumberInputProps } from "../types"
 
 const getValidNumber = (value: string) => parseInt(value) || 0
@@ -44,7 +45,7 @@ export const NumberInput: React.FC<NumberInputProps> = props => {
   }
 
   return (
-    <input
+    <Input
       type="text"
       value={isInputting ? rawValue : value}
       onChange={onChange}

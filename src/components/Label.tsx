@@ -1,8 +1,8 @@
-import styled from "styled-components"
+import * as React from "react"
+import * as S from "./styles"
 
-export const Label = styled.label`
-  font-size: 15px;
-  font-weight: 600;
-  color: #5960e4;
-  margin-bottom: 4px;
-`
+type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement>
+
+export const Label: React.FC<LabelProps> = props => {
+  return <S.Label {...props} />
+}
