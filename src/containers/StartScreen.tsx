@@ -17,7 +17,7 @@ export const StartScreen: React.FC<
   ])
   const widthInput = useNumberInput({ defaultValue: 10, min: 1, max: 30 })
   const heightInput = useNumberInput({ defaultValue: 10, min: 1, max: 30 })
-  const bombAmountInput = useNumberInput({ defaultValue: 5, min: 1, max: 40 })
+  const bombAmountInput = useNumberInput({ defaultValue: 20, min: 1, max: 100 })
 
   const { selectedEntry } = gameModeDropdown
   const isCustom = selectedEntry.value === "custom"
@@ -38,6 +38,7 @@ export const StartScreen: React.FC<
     } else {
       gameStore.setupGame(boardInfo[selectedEntry.value])
     }
+
     gameStore.onStartGame()
   }
 
