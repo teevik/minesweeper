@@ -22,6 +22,12 @@ export const StartScreen: React.FC<
   const { selectedEntry } = gameModeDropdown
   const isCustom = selectedEntry.value === "custom"
 
+  // There can't be more bombs than total amount of squares
+  const totalAmountOfSquares = widthInput.value * heightInput.value
+  if (bombAmountInput.value > totalAmountOfSquares) {
+    bombAmountInput.setValue(totalAmountOfSquares)
+  }
+
   const handleStartGame = () => {
     if (isCustom) {
       gameStore.setupGame({
