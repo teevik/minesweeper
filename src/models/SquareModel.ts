@@ -19,14 +19,22 @@ export class SquareModel {
 
   @action
   public onOpen() {
-    if (this.state === "opened") return
+    if (this.isFlagged) return
+
+    // Open all neighbors
+    if (this.isOpened) {
+      if (this.neighborsWithFlag !== this.neighborsWithBomb) return
+
+      this.neighbors.forEach(neighbor => neighbor.isClosed && neighbor.onOpen())
+      return
+    }
 
     const willExplode = this.hasBomb
     this.state = willExplode ? "exploded" : "opened"
 
     if (!willExplode && this.neighborsWithBomb === 0) {
       for (const neighbor of this.neighbors) {
-        if (neighbor.state === "closed") neighbor.onOpen()
+        if (neighbor.isClosed) neighbor.onOpen()
       }
     }
   }
@@ -39,6 +47,13 @@ export class SquareModel {
   @computed
   public get neighborsWithBomb() {
     const neighbors = this.neighbors.filter(neighbor => neighbor.hasBomb)
+
+    return neighbors.length
+  }
+
+  @computed
+  public get neighborsWithFlag() {
+    const neighbors = this.neighbors.filter(neighbor => neighbor.isFlagged)
 
     return neighbors.length
   }
