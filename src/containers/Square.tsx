@@ -69,6 +69,8 @@ const Wrapper = styled.button`
 
   &.isExploded {
     background-color: #5960e4;
+    border-radius: 50%;
+    margin: 4px;
   }
 
   color: #5960e4;
