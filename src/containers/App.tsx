@@ -4,7 +4,7 @@ import styled, { createGlobalStyle } from "styled-components"
 import { BottomBar, Game, Header, Minefield, StartScreen, TopBar } from "."
 import { gameStore } from "../stores"
 
-export const App: React.FC = observer(props => {
+export const App = observer(() => {
   return (
     <>
       <Wrapper>

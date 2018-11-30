@@ -10,7 +10,7 @@ interface SquareProps {
   squareModel: SquareModel
 }
 
-export const Square: React.FC<SquareProps> = observer(props => {
+export const Square = observer((props: SquareProps) => {
   const { squareModel } = props
   const { hasLost } = gameStore
   const { isFlagged, isOpened, isExploded, hasBomb } = squareModel

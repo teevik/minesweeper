@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { Square } from "../containers"
 import { gameStore } from "../stores"
 
-export const Minefield: React.FC = observer(props => {
+export const Minefield = observer(() => {
   const { minefield, gameHasEnded, boardWidth, boardHeight } = gameStore
 
   const renderedMinefield = minefield.map((square, id) => (

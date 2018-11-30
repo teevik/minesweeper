@@ -3,6 +3,6 @@ import * as S from "./styles"
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
-export const Button: React.FC<ButtonProps> = props => {
+export const Button = (props: ButtonProps) => {
   return <S.Button {...props} />
 }

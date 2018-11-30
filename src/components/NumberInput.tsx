@@ -4,7 +4,7 @@ import { NumberInputProps } from "../types"
 
 const getValidNumber = (value: string) => parseInt(value) || 0
 
-export const NumberInput: React.FC<NumberInputProps> = props => {
+export const NumberInput = (props: NumberInputProps) => {
   const { value, setValue } = props
 
   const [isInputting, setIsInputting] = React.useState(false)

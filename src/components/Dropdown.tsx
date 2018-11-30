@@ -12,7 +12,7 @@ interface DropdownProps {
   onEntryChange: (entry: DropdownEntry) => void
 }
 
-export const Dropdown: React.FC<DropdownProps> = props => {
+export const Dropdown = (props: DropdownProps) => {
   const { entries, selectedEntry, onEntryChange } = props
 
   const handleSelection = (value: any) => {

@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-export const Header: React.FC = props => {
+export const Header = () => {
   return (
     <Wrapper>
       <Title>Minesweeper</Title>

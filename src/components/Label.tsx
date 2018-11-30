@@ -3,6 +3,6 @@ import * as S from "./styles"
 
 type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement>
 
-export const Label: React.FC<LabelProps> = props => {
+export const Label = (props: LabelProps) => {
   return <S.Label {...props} />
 }

@@ -3,7 +3,7 @@ import * as React from "react"
 import styled from "styled-components"
 import { gameStore } from "../stores"
 
-export const BottomBar: React.FC = observer(props => {
+export const BottomBar = observer(() => {
   const { hasWon, hasLost } = gameStore
 
   let resultContent: React.ReactNode
