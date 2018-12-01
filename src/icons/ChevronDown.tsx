@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-export const ChevronDown: React.FC = props => {
+export const ChevronDown = () => {
   return (
     <Wrapper xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.829 29.828">
       <Path d="M6,9l8.725,8.725L23.451,9" />

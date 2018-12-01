@@ -1,7 +1,4 @@
 import * as React from "react"
-import * as AriaMenubutton from "react-aria-menubutton"
-import styled from "styled-components"
-import { Button } from "../components"
 import { ChevronDown } from "../icons"
 import { DropdownEntry } from "../types"
 import * as S from "./styles"

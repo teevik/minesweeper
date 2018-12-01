@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-export const FlagIcon: React.FC = props => {
+export const FlagIcon = () => {
   return (
     <Wrapper xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 22">
       <g transform="translate(-3 -1)">

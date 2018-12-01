@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-export const CloseIcon: React.FC = props => {
+export const CloseIcon = () => {
   return (
     <Wrapper xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.829 29.828">
       <g id="x" transform="translate(-4.586 -4.586)">

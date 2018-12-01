@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-export const RefreshIcon: React.FC = props => {
+export const RefreshIcon = () => {
   return (
     <Wrapper xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.829 29.828">
       <g transform="translate(0 -1.94)">
