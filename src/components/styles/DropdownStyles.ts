@@ -23,7 +23,7 @@ const MenuItem = styled(AriaMenubutton.MenuItem)`
   padding: 10px 16px;
   font-size: 16px;
   font-weight: 500;
-  color: rgba(105, 108, 163, 0.73);
+  color: rgba(104, 107, 171, 0.8);
   text-align: right;
   background-color: #0b0c1e;
   outline: none !important;
