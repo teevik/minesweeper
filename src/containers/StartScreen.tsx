@@ -1,14 +1,16 @@
 import * as React from "react"
+import { useContext } from "react"
 import styled from "styled-components"
 import { Button, Dropdown, Label, NumberInput } from "../components"
 import * as S from "../components/styles"
 import { boardInfo } from "../constants"
+import { GameStoreContext } from "../contexts"
 import { useDropdown, useNumberInput } from "../hooks"
-import { gameStore } from "../stores"
 
 type StartScreenProps = React.HTMLAttributes<HTMLMainElement>
 
 export const StartScreen = (props: StartScreenProps) => {
+  const gameStore = useContext(GameStoreContext)
   const gameModeDropdown = useDropdown([
     { value: "beginner", content: "Beginner - 9x9" },
     { value: "advanced", content: "Advanced - 16x16" },

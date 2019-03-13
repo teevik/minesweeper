@@ -1,11 +1,13 @@
 import classNames from "classnames"
 import { observer } from "mobx-react-lite"
 import * as React from "react"
+import { useContext } from "react"
 import styled from "styled-components"
 import { Square } from "../containers"
-import { gameStore } from "../stores"
+import { GameStoreContext } from "../contexts"
 
 export const Minefield = observer(() => {
+  const gameStore = useContext(GameStoreContext)
   const { minefield, gameHasEnded, boardWidth, boardHeight } = gameStore
 
   const renderedMinefield = minefield.map((square, id) => (

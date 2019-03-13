@@ -1,1 +1,1 @@
-export * from "./gameStore"
+export * from "./GameStore"

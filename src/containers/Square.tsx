@@ -1,10 +1,11 @@
 import classNames from "classnames"
 import { observer } from "mobx-react-lite"
 import * as React from "react"
+import { useContext } from "react"
 import styled from "styled-components"
+import { GameStoreContext } from "../contexts"
 import { FlagIcon } from "../icons"
 import { SquareModel } from "../models"
-import { gameStore } from "../stores"
 
 interface SquareProps {
   squareModel: SquareModel
@@ -12,6 +13,7 @@ interface SquareProps {
 
 export const Square = observer((props: SquareProps) => {
   const { squareModel } = props
+  const gameStore = useContext(GameStoreContext)
   const { hasLost } = gameStore
   const { isFlagged, isOpened, isExploded, hasBomb } = squareModel
 

@@ -16,7 +16,7 @@ const containsCoordinates = (list: Coordinates[], { x, y }: Coordinates) => {
   return !!item
 }
 
-class GameStore {
+export class GameStore {
   @observable
   private state: GameState = "stopped"
 
@@ -138,5 +138,3 @@ class GameStore {
     return this.minefield.filter(square => square.isFlagged).length
   }
 }
-
-export const gameStore = new GameStore()

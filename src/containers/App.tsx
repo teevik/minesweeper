@@ -2,11 +2,15 @@ import { observer } from "mobx-react-lite"
 import * as React from "react"
 import styled, { createGlobalStyle } from "styled-components"
 import { BottomBar, Game, Header, Minefield, StartScreen, TopBar } from "."
-import { gameStore } from "../stores"
+import { GameStoreContext } from "../contexts"
+import { useStore } from "../hooks"
+import { GameStore } from "../stores"
 
 export const App = observer(() => {
+  const gameStore = useStore(GameStore)
+
   return (
-    <>
+    <GameStoreContext.Provider value={gameStore}>
       <Wrapper>
         <Header />
         <Game hidden={gameStore.hasStopped}>
@@ -17,7 +21,7 @@ export const App = observer(() => {
         <StartScreen hidden={!gameStore.hasStopped} />
       </Wrapper>
       <GlobalStyle />
-    </>
+    </GameStoreContext.Provider>
   )
 })
 

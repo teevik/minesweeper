@@ -1,9 +1,11 @@
 import { observer } from "mobx-react-lite"
 import * as React from "react"
+import { useContext } from "react"
 import styled from "styled-components"
-import { gameStore } from "../stores"
+import { GameStoreContext } from "../contexts"
 
 export const BottomBar = observer(() => {
+  const gameStore = useContext(GameStoreContext)
   const { hasWon, hasLost } = gameStore
 
   let resultContent: React.ReactNode
