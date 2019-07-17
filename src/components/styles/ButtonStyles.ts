@@ -11,16 +11,18 @@ export const Button = styled.button`
   font-size: 16px;
   font-weight: 500;
   color: rgba(89, 96, 228, 0.73);
-  background-color: #0b0c1e;
+  background-color: #121431;
   outline: none !important;
   cursor: pointer;
 
+  transition: filter 0.1s ease;
+
   &:hover,
   &:focus {
-    background-color: #0e1028;
+    filter: brightness(1.2);
   }
 
   &:active {
-    background-color: #0c0d22;
+    filter: brightness(0.9);
   }
 `

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { NumberInputProps } from "../types"
+import { NumberInputProps } from "../types/NumberInputProps"
 
 interface UseNumberInputOptions {
   defaultValue: number

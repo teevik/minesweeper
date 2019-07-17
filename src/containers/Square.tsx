@@ -1,11 +1,10 @@
 import classNames from "classnames"
 import { observer } from "mobx-react-lite"
 import * as React from "react"
-import { useContext } from "react"
 import styled from "styled-components"
-import { GameStoreContext } from "../contexts"
-import { FlagIcon } from "../icons"
-import { SquareModel } from "../models"
+import { FlagIcon } from "../icons/FlagIcon"
+import { SquareModel } from "../models/SquareModel"
+import { useGameStore } from "../stores/GameStore"
 
 interface SquareProps {
   squareModel: SquareModel
@@ -13,7 +12,7 @@ interface SquareProps {
 
 export const Square = observer((props: SquareProps) => {
   const { squareModel } = props
-  const gameStore = useContext(GameStoreContext)
+  const gameStore = useGameStore()
   const { hasLost } = gameStore
   const { isFlagged, isOpened, isExploded, hasBomb } = squareModel
 
@@ -66,7 +65,7 @@ const Wrapper = styled.button`
 
   &.isOpened,
   &:hover {
-    background-color: rgba(0, 0, 0, 0.16);
+    background-color: #0a0c1b;
   }
 
   &.isExploded {

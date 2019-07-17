@@ -1,12 +1,12 @@
 import { observer } from "mobx-react-lite"
 import * as React from "react"
-import { useContext } from "react"
 import styled from "styled-components"
-import { GameStoreContext } from "../contexts"
-import { CloseIcon, RefreshIcon } from "../icons"
+import { CloseIcon } from "../icons/CloseIcon"
+import { RefreshIcon } from "../icons/RefreshIcon"
+import { useGameStore } from "../stores/GameStore"
 
 export const TopBar = observer(() => {
-  const gameStore = useContext(GameStoreContext)
+  const gameStore = useGameStore()
   const { bombAmount, flaggedAmount } = gameStore
 
   const bombsLeft = bombAmount - flaggedAmount

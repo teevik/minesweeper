@@ -1,16 +1,19 @@
 import { observer } from "mobx-react-lite"
 import * as React from "react"
 import styled, { createGlobalStyle } from "styled-components"
-import { BottomBar, Game, Header, Minefield, StartScreen, TopBar } from "."
-import { GameStoreContext } from "../contexts"
-import { useStore } from "../hooks"
-import { GameStore } from "../stores"
+import { useGameStore } from "../stores/GameStore"
+import { BottomBar } from "./BottomBar"
+import { Game } from "./Game"
+import { Header } from "./Header"
+import { Minefield } from "./Minefield"
+import { StartScreen } from "./StartScreen"
+import { TopBar } from "./TopBar"
 
 export const App = observer(() => {
-  const gameStore = useStore(GameStore)
+  const gameStore = useGameStore()
 
   return (
-    <GameStoreContext.Provider value={gameStore}>
+    <>
       <Wrapper>
         <Header />
         <Game hidden={gameStore.hasStopped}>
@@ -21,7 +24,7 @@ export const App = observer(() => {
         <StartScreen hidden={!gameStore.hasStopped} />
       </Wrapper>
       <GlobalStyle />
-    </GameStoreContext.Provider>
+    </>
   )
 })
 
@@ -41,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    background-color: #0B0C20;
+    background-color: #070814;
     font-family: Montserrat, sans-serif;
   }
 

@@ -1,4 +1,4 @@
-import { BoardInfo } from "../types"
+import { BoardInfo } from "../types/BoardInfo"
 
 export const boardInfo: Record<string, BoardInfo> = {
   beginner: { width: 9, height: 9, bombAmount: 10 },

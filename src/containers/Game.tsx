@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-type GameProps = React.HTMLAttributes<HTMLMainElement>
+type GameProps = React.HTMLAttributes<HTMLElement>
 
 export const Game = (props: GameProps) => {
   return <Wrapper {...props} />

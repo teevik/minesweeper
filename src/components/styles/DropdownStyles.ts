@@ -11,7 +11,7 @@ const Menu = styled(AriaMenubutton.Menu)`
   position: absolute;
   top: 100%;
   right: 0;
-  margin-top: 4px;
+  margin-top: 8px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
 `
 
@@ -25,7 +25,7 @@ const MenuItem = styled(AriaMenubutton.MenuItem)`
   font-weight: 500;
   color: rgba(104, 107, 171, 0.8);
   text-align: right;
-  background-color: #0b0c1e;
+  background-color: #080810;
   outline: none !important;
   cursor: pointer;
 

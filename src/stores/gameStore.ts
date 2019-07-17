@@ -1,7 +1,8 @@
 import { action, computed, observable } from "mobx"
-import { randomBetween } from "../helpers"
-import { SquareModel } from "../models"
-import { BoardInfo } from "../types"
+import { createStoreProvider } from "../helpers/createStoreProvider"
+import { randomBetween } from "../helpers/randomBetween"
+import { SquareModel } from "../models/SquareModel"
+import { BoardInfo } from "../types/BoardInfo"
 
 export type GameState = "stopped" | "started"
 
@@ -16,7 +17,7 @@ const containsCoordinates = (list: Coordinates[], { x, y }: Coordinates) => {
   return !!item
 }
 
-export class GameStore {
+class GameStore {
   @observable
   private state: GameState = "stopped"
 
@@ -138,3 +139,5 @@ export class GameStore {
     return this.minefield.filter(square => square.isFlagged).length
   }
 }
+
+export const [useGameStore, GameStoreProvider] = createStoreProvider(GameStore)

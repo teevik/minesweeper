@@ -1,6 +1,6 @@
 import * as React from "react"
-import { Input } from "."
-import { NumberInputProps } from "../types"
+import { NumberInputProps } from "../types/NumberInputProps"
+import { Input } from "./styles"
 
 const getValidNumber = (value: string) => parseInt(value) || 0
 

@@ -1,16 +1,19 @@
 import * as React from "react"
-import { useContext } from "react"
 import styled from "styled-components"
-import { Button, Dropdown, Label, NumberInput } from "../components"
+import { Button } from "../components/Button"
+import { Dropdown } from "../components/Dropdown"
+import { Label } from "../components/Label"
+import { NumberInput } from "../components/NumberInput"
 import * as S from "../components/styles"
-import { boardInfo } from "../constants"
-import { GameStoreContext } from "../contexts"
-import { useDropdown, useNumberInput } from "../hooks"
+import { boardInfo } from "../constants/boardInfo"
+import { useDropdown } from "../hooks/useDropdown"
+import { useNumberInput } from "../hooks/useNumberInput"
+import { useGameStore } from "../stores/GameStore"
 
-type StartScreenProps = React.HTMLAttributes<HTMLMainElement>
+type StartScreenProps = React.HTMLAttributes<HTMLElement>
 
 export const StartScreen = (props: StartScreenProps) => {
-  const gameStore = useContext(GameStoreContext)
+  const gameStore = useGameStore()
   const gameModeDropdown = useDropdown([
     { value: "beginner", content: "Beginner - 9x9" },
     { value: "advanced", content: "Advanced - 16x16" },
@@ -74,7 +77,7 @@ const Wrapper = styled.main`
   flex-direction: column;
   margin: auto;
   padding: 32px;
-  background-color: rgba(0, 0, 0, 0.36);
+  background-color: #0c0d1f;
   min-width: 350px;
 
   ${S.Label} {
@@ -86,7 +89,7 @@ const Wrapper = styled.main`
 `
 
 const Hr = styled.hr`
-  border-color: rgba(255, 255, 255, 0.01);
-  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.03);
+  border-width: 1.5px;
   margin: 32px 0;
 `

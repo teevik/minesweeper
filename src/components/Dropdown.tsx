@@ -1,6 +1,6 @@
 import * as React from "react"
-import { ChevronDown } from "../icons"
-import { DropdownEntry } from "../types"
+import { ChevronDown } from "../icons/ChevronDown"
+import { DropdownEntry } from "../types/DropdownEntry"
 import * as S from "./styles"
 
 interface DropdownProps {
